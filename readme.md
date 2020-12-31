@@ -1,6 +1,6 @@
-# **Library Managment System**
+# **Library Management System**
 
-*Small Library Mangament System using Django and Boostrap*
+*Small Library Management System using Django and Boostrap*
 
 ## Steps To be followed
     * Create a Virtual enviornment using 
