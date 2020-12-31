@@ -75,21 +75,20 @@ def userpasschange(request):
         return redirect('/login/')
 
 def userchnagepass(request):
-    if request.user.is_authenticated:
+    
             
-        if request.method == 'POST':
-            form = PasswordChangeform2(user= request.user, data=request.POST)
-            if form.is_valid():
-                form.save()
-                messages.success(request,"password changed successfully")
-                update_session_auth_hash(request,form.user)
-                return redirect('/')
+    if request.method == 'POST':
+        form = PasswordChangeform2(user= request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"password changed successfully")
+            update_session_auth_hash(request,form.user)
+            return redirect('/login/')
 
-        else:
-            form =PasswordChangeform2(user = request.user)
-        return render(request,'passchange2.html',{'form':form})
     else:
-        return redirect('/login/')
+        form =PasswordChangeform2(user = request.user)
+    return render(request,'passchange2.html',{'form':form})
+   
 
 
     

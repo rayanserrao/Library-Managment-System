@@ -29,7 +29,7 @@ Login page
         </div>
         {% endfor %}
 
-        <input type="submit" class="btn btn-dark mb-3" value="SUBMIT" name="" id="">
+        <input type="submit" class="btn btn-dark mb-3" value="LOGIN" name="" id="">
         {% if form.non_field_errors %}
             {% for error in form.non_field_errors %}
             <p class="alert alert-danger mt-3">{{error}}</p>
@@ -37,8 +37,10 @@ Login page
             {% endif %}
     
     
-    
+            
     
     </form></center>
+    <center><small class="text-primery ml-5"> <a href="/changepass2/">Forgot your passoword?</a></small></center>
+    
 </div>
 {% endblock %}
