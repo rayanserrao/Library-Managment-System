@@ -43,4 +43,9 @@ def loginuser(request):
     else:
         form = LoginForm()
     return render(request,'login.html',{'form':form})
+
+def logoutuser(request):
+    logout(request)
+    messages.info(request,'Logged Out successfully')
+    return redirect('/login/')
     

@@ -9,6 +9,10 @@ Login page
 
 <div class="col-sm-10">
     <h3 class="text-dark mt-5">Login Form</h3>
+    
+    <small class="text-muted">Dont have an account? Please Signup</small>
+    <a href="/signup/" class="btn btn-dark">Signup</a>
+
     <center><form class="container ml-5" action="" method="POST" novalidate>
         {% csrf_token %}
         {% for fm in form %}
