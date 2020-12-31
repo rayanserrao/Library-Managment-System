@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+Password change
+        {% endblock %}
+
+{% block content %}
+
+<div class="container col-sm-10 ">
+    <h3 class="text-dark ml-2 mt-3">Change your passowrd</h3>
+    <small class="text-muted ml-2">Forgot passowrd? Reset your passowrd using</small>
+    <a href="/changepass2/" class="btn btn-dark">Reset Password</a>
+
+    <center><form action="" class="container ml-5 my-3" method="POST" novalidate>
+        {% csrf_token %}
+        {% for fm in form %}
+        <div class="form-group col-md-4">
+        {{fm.label_tag}}
+        {{fm}}
+        <small class="text-warning">
+            {{fm.errors|striptags}}
+        </small>
+    </div>
+    {% endfor %}
+    <input type="submit" class="btn btn-secondary" value="SAVE" name="" id="">
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <small class="alert alert-danger mt-3">{{errors}}</small>
+{% endfor %}
+{% endif %}
+    </form></center>
+
+
+</div>
+
+
+        {% endblock %}

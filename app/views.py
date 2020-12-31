@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect
-from app.forms import SignupForm,LoginForm
+from app.forms import SignupForm,LoginForm,Passwordchangeform1,PasswordChangeform2
 from django.contrib.auth.models import User
 from django.contrib import messages 
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import authenticate,login,logout,update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm,SetPasswordForm
+
 
 # Create your views here.
 def home(request):
@@ -45,7 +47,49 @@ def loginuser(request):
     return render(request,'login.html',{'form':form})
 
 def logoutuser(request):
-    logout(request)
-    messages.info(request,'Logged Out successfully')
-    return redirect('/login/')
+    if request.user.is_authenticated:
+
+
+        logout(request)
+        messages.info(request,'Logged Out successfully')
+        return redirect('/login/')
+    else:
+
+        return redirect('/login/')
+
+def userpasschange(request):
+    if request.user.is_authenticated:
+            
+        if request.method == 'POST':
+            form = Passwordchangeform1(user= request.user, data=request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request,"password changed successfully")
+                update_session_auth_hash(request,form.user)
+                return redirect('/')
+
+        else:
+            form = Passwordchangeform1(user = request.user)
+        return render(request,'passchange1.html',{'form':form})
+    else:
+        return redirect('/login/')
+
+def userchnagepass(request):
+    if request.user.is_authenticated:
+            
+        if request.method == 'POST':
+            form = PasswordChangeform2(user= request.user, data=request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request,"password changed successfully")
+                update_session_auth_hash(request,form.user)
+                return redirect('/')
+
+        else:
+            form =PasswordChangeform2(user = request.user)
+        return render(request,'passchange2.html',{'form':form})
+    else:
+        return redirect('/login/')
+
+
     
