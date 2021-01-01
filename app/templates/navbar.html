@@ -29,15 +29,14 @@
           <a class="nav-link" href="#">Contact</a>
         </li>
 
-        <li class="nav-item">
+       <!-- <li class="nav-item">
           <a class="nav-link" href="/logout/">Logout</a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="/changepass1/">Change Password</a>
         </li>
-
-       
+        -->
 
       
     </ul>
@@ -46,6 +45,22 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 
     </form>
+
+    <ul class="navbar-nav mr-4">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <b>{{request.user}}</b>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class=" dropdown-item secondary" href="/logout/">Logout</a>
+          <a class=" dropdown-item secondary" href="/changepass1/">
+            <p>Change</p>
+            <p>Password</p> </a>
+          
+        </div>
+      </li>
+      </ul>
     {% else %}
        
 
